@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Persona implements IdPersona{
     private IdPersona idPersona;
     private Nombre nombreCompleto;
@@ -24,6 +26,18 @@ public class Persona implements IdPersona{
     }
     @Override
     public String toString() {
+        return "Persona: " + idPersona + "\nNombre: " + nombreCompleto + "\nTelefono: " + telefono;
+    }
+    @Override
+    public boolean equals(Object o){
+        if(this == o){
+            return true;
+        }
+        if(o == null || getClass() != o.getClass()){
+            return false;
+        }
+        Persona persona =  (Persona) o;
 
+        return Objects.equals(idPersona, persona.idPersona) && Objects.equals(nombreCompleto, persona.nombreCompleto);
     }
 }

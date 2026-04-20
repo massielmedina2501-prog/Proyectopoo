@@ -5,8 +5,7 @@ public class Pasajero extends Persona {
 
 
     public Pasajero() {
-
-
+        //super()
     }
 
     @Override
