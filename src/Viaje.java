@@ -57,7 +57,7 @@ public class Viaje {
     public void addPasaje(Pasaje pasaje) {
         this.pasajes.add(pasaje);
     }
-    //este lo agregue pq lo necesitaba en SistemaDePasajes
+    //este lo agregue pq lo necesitaba en SistemaVentaPasajes
     public List<Pasaje> getPasajes() {
         return pasajes;
     }
