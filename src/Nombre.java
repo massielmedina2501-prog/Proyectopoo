@@ -60,6 +60,14 @@ public class Nombre{
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (this == obj) return true;
+
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Nombre other = (Nombre) obj;
+
+        return Objects.equals(nombres, other.nombres) &&
+                Objects.equals(apellidoPaterno, other.apellidoPaterno) &&
+                Objects.equals(apellidoMaterno, other.apellidoMaterno);
     }
 }
