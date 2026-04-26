@@ -9,7 +9,6 @@ public class Viaje {
     private LocalTime hora;
     private int precio;
 
-    //se agregan
     private Bus bus;
     private List<Pasaje> pasajes;
 
@@ -24,46 +23,78 @@ public class Viaje {
     public LocalDate getFecha() {
         return fecha;
     }
+
     public LocalTime getHora() {
         return hora;
     }
+
     public int getPrecio() {
         return precio;
     }
+
     public void setPrecio(int precio) {
         this.precio = precio;
     }
+
     public Bus getBus() {
         return bus;
+    }
+
+    public List<Pasaje> getPasajes() {
+        return pasajes;
+    }
+
+    // verificacion de cantidad de asientos
+    public boolean asientoValido(int asiento) {
+        return asiento >= 1 && asiento <= bus.getNroAsientos();
+    }
+
+    // Verifica si el asiento ya está ocupado
+    public boolean asientoDisponible(int asiento) {
+        for (Pasaje p : pasajes) {
+            if (p.getAsiento() == asiento) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean addPasaje(Pasaje pasaje) {
+        int asiento = pasaje.getAsiento();
+
+        if (!asientoValido(asiento)) {
+            System.out.println(".:| Asiento fuera de rango |:.");
+            return false;
+        }
+
+        if (!asientoDisponible(asiento)) {
+            System.out.println(".:| Asiento ocupado |:.");
+            return false;
+        }
+
+        pasajes.add(pasaje);
+        return true;
     }
 
     public String[][] getAsientos() {
         int total = bus.getNroAsientos();
         String[][] matriz = new String[total][2];
 
-        // Inicializar todos como LIBRE
         for (int i = 0; i < total; i++) {
-            matriz[i][0] = String.valueOf(i + 1); // número de asiento
+            matriz[i][0] = String.valueOf(i + 1);
             matriz[i][1] = "LIBRE";
         }
-        // Marcar los ocupados
         for (Pasaje p : pasajes) {
-            int asiento = p.getAsiento(); // asientos parten en 1
+            int asiento = p.getAsiento();
             matriz[asiento - 1][1] = "OCUPADO";
         }
         return matriz;
     }
 
-    public void addPasaje(Pasaje pasaje) {
-        this.pasajes.add(pasaje);
-    }
-    //este lo agregue pq lo necesitaba en SistemaVentaPasajes
-    public List<Pasaje> getPasajes() {
-        return pasajes;
-    }
     public boolean existeDisponibilidad() {
         return getNroAsientosDisponibles() > 0;
     }
+
     public int getNroAsientosDisponibles() {
         return bus.getNroAsientos() - pasajes.size();
     }
