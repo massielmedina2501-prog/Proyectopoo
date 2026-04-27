@@ -13,8 +13,8 @@ public class SistemaVentaPasajes {
 
     public boolean createCliente(IdPersona id, Nombre nom, String fono, String email){
         if (id == null || nom == null || email == null) return false;
-
         if (findCliente(id) != null) return false;
+
         Cliente c = new Cliente(id, nom, email);
         c.setTelefono(fono);
         clientes.add(c);
@@ -23,8 +23,8 @@ public class SistemaVentaPasajes {
 
     public boolean createPasajero(IdPersona id, Nombre nom, String fono, Nombre nomContacto, String fonoContacto){
         if (id == null || nom == null || nomContacto == null || fonoContacto == null) return false;
-
         if (findPasajero(id) != null) return false;
+
         Pasajero p = new Pasajero(id, nom);
         p.setTelefono(fono);
         p.setNomContacto(nomContacto);
@@ -35,8 +35,8 @@ public class SistemaVentaPasajes {
 
     public boolean createBus(String patente, String marca, String modelo, int nroAsientos){
         if (patente == null || marca == null || modelo == null || nroAsientos <= 0) return false;
-
         if (findBus(patente) != null) return false;
+
         Bus b = new Bus(patente, nroAsientos);
         b.setMarca(marca);
         b.setModelo(modelo);
@@ -73,11 +73,11 @@ public class SistemaVentaPasajes {
         return true;
     }
 
+
     public boolean vendePasaje(String idDoc, LocalDate fecha, LocalTime hora, String patBus, int asiento, IdPersona idPasajero){
         if(idDoc == null || fecha == null || hora == null || patBus == null || idPasajero == null || asiento <= 0){
             return false;
         }
-
         Venta venta = findVenta(idDoc, TipoDocumento.BOLETA);
         Viaje viaje = findViaje(fecha, hora, patBus);
         Pasajero pasajero = findPasajero(idPasajero);
@@ -89,17 +89,27 @@ public class SistemaVentaPasajes {
 
     public int getMontoVenta(String idDocumento, TipoDocumento tipo){
         Venta v = findVenta(idDocumento, tipo);
-        return (v == null) ? 0 : v.getMonto();
+        if (v == null) {
+            return 0;
+        }
+        return v.getMonto();
     }
 
     public String[][] listAsientosDeViaje(LocalDate fecha, LocalTime hora, String patBus){
         Viaje v = findViaje(fecha, hora, patBus);
-        return (v == null) ? new String[0][0] : v.getAsientos();
+        if (v == null) {
+            return new String[0][0];
+        } else {
+            return v.getAsientos();
+        }
     }
 
     public String getNombrePasajero(IdPersona idPasajero){
         Pasajero p = findPasajero(idPasajero);
-        return (p == null) ? "" : p.getNombreCompleto().toString();
+        if (p == null) {
+            return "";
+        }
+        return p.getNombreCompleto().toString();
     }
 
     public String[][] listViajes(){
@@ -118,16 +128,18 @@ public class SistemaVentaPasajes {
     public String[][] getHorariosDisponibles(LocalDate fecha){
         if (fecha == null) return new String[0][0];
         ArrayList<String[]> lista = new ArrayList<>();
-
         for (Viaje v : viajes){
-            if (v.getFecha().equals(fecha) && v.getNroAsientosDisponibles() > 0){
-                String[] fila = new String[2];
-                fila[0] = v.getHora().toString();     // hora
-                fila[1] = v.getBus().getPatente();    // patente
+            if (v.getFecha().equals(fecha) &&
+                    v.getNroAsientosDisponibles() > 0){
+                String[] fila = new String[4];
+                fila[0] = v.getHora().toString(); // hora
+                fila[1] = v.getBus().getPatente(); // patente
+                fila[2] = String.valueOf(v.getPrecio()); // precio
+                fila[3] = String.valueOf(v.getNroAsientosDisponibles()); // disponibles
                 lista.add(fila);
             }
         }
-        String[][] matriz = new String[lista.size()][2];
+        String[][] matriz = new String[lista.size()][4];
         for (int i = 0; i < lista.size(); i++){
             matriz[i] = lista.get(i);
         }
@@ -140,7 +152,6 @@ public class SistemaVentaPasajes {
 
         List<Pasaje> lista = viaje.getPasajes();
         String[][] matriz = new String[lista.size()][5];
-
         for (int i = 0; i < lista.size(); i++){
             Pasaje p = lista.get(i);
             matriz[i][0] = String.valueOf(p.getAsiento());
