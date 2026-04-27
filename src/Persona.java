@@ -1,43 +1,52 @@
 import java.util.Objects;
 
-public class Persona implements IdPersona{
+public class Persona {
+
     private IdPersona idPersona;
     private Nombre nombreCompleto;
     private String telefono;
 
-    public Persona(IdPersona id, Nombre nombre ){
-        this.idPersona = id;
-        this.nombreCompleto = nombre;
+    public Persona(IdPersona idPersona, Nombre nombreCompleto) {
+        this.idPersona = idPersona;
+        this.nombreCompleto = nombreCompleto;
     }
+
+
     public IdPersona getIdPersona() {
         return idPersona;
     }
-    public Nombre getNombreCompleto(){
+
+    public Nombre getNombreCompleto() {
         return nombreCompleto;
     }
-    public void setNombreCompleto(Nombre nombreCompleto){
-        this.nombreCompleto = nombreCompleto;
-    }
-    public String getTelefono(){
+
+    public String getTelefono() {
         return telefono;
     }
-    public void setTelefono(String telefono){
+
+
+    public void setNombreCompleto(Nombre nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
+
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+    
     @Override
     public String toString() {
-        return "Persona: " + idPersona + "\nNombre: " + nombreCompleto + "\nTelefono: " + telefono;
+        return "Persona: " + idPersona +
+                "\nNombre: " + nombreCompleto +
+                "\nTelefono: " + telefono;
     }
-    @Override
-    public boolean equals(Object o){
-        if(this == o){
-            return true;
-        }
-        if(o == null || getClass() != o.getClass()){
-            return false;
-        }
-        Persona persona =  (Persona) o;
 
-        return Objects.equals(idPersona, persona.idPersona);
+  
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Persona)) return false;
+
+        Persona p = (Persona) o;
+        return Objects.equals(idPersona, p.idPersona);
     }
 }
