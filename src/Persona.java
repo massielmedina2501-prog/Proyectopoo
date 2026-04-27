@@ -6,8 +6,8 @@ public class Persona implements IdPersona{
     private String telefono;
 
     public Persona(IdPersona id, Nombre nombre ){
-        this.id = idPersona;
-        this.nombre = nombreCompleto;
+        this.idPersona = id;
+        this.nombreCompleto = nombre;
     }
     public IdPersona getIdPersona() {
         return idPersona;
@@ -38,6 +38,6 @@ public class Persona implements IdPersona{
         }
         Persona persona =  (Persona) o;
 
-        return Objects.equals(idPersona, persona.idPersona) && Objects.equals(nombreCompleto, persona.nombreCompleto);
+        return Objects.equals(idPersona, persona.idPersona);
     }
 }

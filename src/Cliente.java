@@ -6,7 +6,7 @@ public class Cliente extends Persona {
     ArrayList<Venta> ventas;
 
     public Cliente(IdPersona id, Nombre nombre,String email) {
-        super(idPersona, nombreCompleto);
+        super(id, nombre);
         this.email = email;
         this.ventas = new ArrayList<>();
     }
