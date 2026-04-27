@@ -3,7 +3,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-//Denisse Manzor Tapia
+//Denisse Manzor Tapia.
 public class Viaje {
     private LocalDate fecha;
     private LocalTime hora;
