@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-//
+//Luis Reyes Alcaino
 public class Cliente extends Persona {
 
     private String email;
