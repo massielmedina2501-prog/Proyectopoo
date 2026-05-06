@@ -32,6 +32,9 @@ public class Bus {
     public int getNroAsientos() {
         return nroAsientos;
     }
+    public Empresa getEmpresa(){
+
+    }
     public void addViaje(Viaje viaje){
         this.viajes.add(viaje);
     }
