@@ -86,11 +86,93 @@ public class UISVP {
         }while (opcion != 14);
 
     }
-    private void createEmpresa(){}
+    private void createEmpresa(){
+        System.out.println("...:::: Creando una nueva Empresa ::::....");
+        try {
+
+            System.out.print("Ingrese el Rut de la empresa: ");
+            String rutEmpresa = sc.nextLine();
+
+            Rut rut = new Rut(rutEmpresa);
+
+            System.out.println("Ingrese el nombre de la empresa: ");
+            String nombre = sc.nextLine();
+
+            System.out.println("Ingrese la URL de la empresa: ");
+            String urlString = sc.nextLine();
+
+            // Revisar esto
+            ControladorEmpresas.getInstance().createEmpresa(rut, nombre,urlString);
+
+            System.out.println("...::: Empresa Creada Exitosamente::::....");
+
+        }catch (SistemaVentaPasajesException e){
+            System.out.println("Error de creacion de la empresa: " + e.getMessage());
+        }catch (Exception e){
+            System.out.println("Error en la creacion de la empresa.");
+        }
+    }
     private void contratarTripulante(){}
-    private void createTerminal(){}
+    private void createTerminal(){
+        System.out.println("...:::: Creando un nuevo terminal ::::....");
+        try {
+            System.out.print("Ingrese nombre del terminal: ");
+            String terminal = sc.nextLine();
+
+            System.out.println("Ingrese nombre de la calle: ");
+            String calle = sc.nextLine();
+
+            System.out.println("Ingrese numero de la calle: ");
+            String numero = sc.nextLine();
+
+            System.out.println("Ingrese la comuna: ");
+            String comuna = sc.nextLine();
+
+
+            // Revisar esto
+            Direccion direccion = new Direccion(calle,numero,comuna);
+
+            ControladorEmpresas.getInstance().createTerminal(terminal,direccion);
+            System.out.println("...::: Terminal guardado exitosamente::::....");
+
+        }catch (SistemaVentaPasajesException e){
+            System.out.println("Error en la creacion de la terminal: " + e.getMessage());
+        }catch (Exception e){
+            System.out.println("Error en la creacion de la terminal.");
+        }
+    }
     private void createCliente(){}
-    private void createBus(){}
+    private void createBus(){
+        System.out.println("...:::: Creando un nuevo bus ::::....");
+        try {
+            System.out.print("Ingrese la patente del bus: ");
+            String patente = sc.nextLine();
+
+            System.out.println("Ingrese la marca del bus: ");
+            String marca = sc.nextLine();
+
+            System.out.println("Ingrese el modelo del bus: ");
+            String modelo = sc.nextLine();
+
+            System.out.println("Ingrese el numero de asientos: ");
+            int numero = sc.nextInt();
+
+            System.out.println("::::Dato de la empresa");
+            String rutEmpresa =  sc.nextLine();
+            Rut rut = new Rut(rutEmpresa);
+
+
+            ControladorEmpresas.getInstance().createBus(patente,marca,modelo,numero);
+
+            System.out.println("...:::: Bus guardado exitosamente::::....");
+        }catch (SistemaVentaPasajesException e){
+            System.out.println("Error en la creacion del bus: " + e.getMessage());
+        }catch (NumberFormatException e){
+            System.out.println("Error la cantidad de asientos no es valida: ");
+        }catch (Exception e){
+            System.out.println("Error");
+        }
+    }
     private void createViaje(){}
     private void venderPasaje(){}
     private void pagaVentaPasaje(){}
