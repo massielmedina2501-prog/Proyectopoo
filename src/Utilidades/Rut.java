@@ -1,5 +1,7 @@
+package Utilidades;
+
 //Denisse Alejandra Manzor Tapia
-public class Rut implements IdPersona{
+public class Rut implements IdPersona {
     private int numero;
     private char dv;
 
@@ -53,6 +55,6 @@ public class Rut implements IdPersona{
 
         int num = Integer.parseInt(partes[0]); // cambia el numero a int
         char dv = partes[1].charAt(0); //cambia el dv a char
-        return new Rut(num, dv); //crea un nuevo objeto Rut con numero en int y el dv en char (separados)
+        return new Rut(num, dv); //crea un nuevo objeto Utilidades.Rut con numero en int y el dv en char (separados)
     }
 }

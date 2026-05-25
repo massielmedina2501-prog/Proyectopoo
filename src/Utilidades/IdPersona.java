@@ -1,3 +1,4 @@
+package Utilidades;
 //Denisse Alejandra Manzor Tapia
 
 public interface IdPersona {

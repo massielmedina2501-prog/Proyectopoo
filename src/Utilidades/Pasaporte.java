@@ -1,5 +1,7 @@
+package Utilidades;
+
 //Denisse Alejandra Manzor Tapia
-public class Pasaporte implements IdPersona{
+public class Pasaporte implements IdPersona {
     private String numero;
     private String nacionalidad;
 
@@ -33,7 +35,7 @@ public class Pasaporte implements IdPersona{
         return numero.equals(p.numero) && nacionalidad.equals(p.nacionalidad);
     }
 
-    //of (si uno de los dos es nulo retornara nulo, si no, retornara un nuevo objeto Pasaporte.
+    //of (si uno de los dos es nulo retornara nulo, si no, retornara un nuevo objeto Utilidades.Pasaporte.
     public static Pasaporte of(String num, String nacionalidad) {
         if (num == null || nacionalidad == null) {
             return null; //es como un break
