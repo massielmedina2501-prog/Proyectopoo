@@ -7,6 +7,7 @@ public class Bus {
     private String modelo;
     private int nroAsientos;
 
+    private Empresa empresa;
     private ArrayList<Viaje> viajes;
 
     public Bus(String patente, int nroAsientos) {
@@ -33,7 +34,7 @@ public class Bus {
         return nroAsientos;
     }
     public Empresa getEmpresa(){
-
+        return empresa;
     }
     public void addViaje(Viaje viaje){
         this.viajes.add(viaje);
