@@ -2,6 +2,7 @@ package Modelo;
 import Utilidades.*;
 import java.util.ArrayList;
 
+//Denisse Manzor
 public class Empresa {
     private Rut rut;
     private String nombre;

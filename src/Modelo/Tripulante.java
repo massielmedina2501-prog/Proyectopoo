@@ -2,6 +2,7 @@ package Modelo;
 import java.util.ArrayList;
 import Utilidades.*;
 
+//Denisse Manzor
 public class Tripulante extends Persona {
     private Direccion direccion;
     private ArrayList<Viaje> viajes;

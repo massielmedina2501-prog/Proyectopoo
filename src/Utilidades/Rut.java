@@ -1,6 +1,6 @@
 package Utilidades;
 
-//Denisse Alejandra Manzor Tapia
+//Denisse Manzor Tapia
 public class Rut implements IdPersona {
     private int numero;
     private char dv;

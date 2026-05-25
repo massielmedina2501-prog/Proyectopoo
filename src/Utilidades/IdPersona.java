@@ -1,5 +1,5 @@
 package Utilidades;
-//Denisse Alejandra Manzor Tapia
+//Denisse Manzor Tapia
 
 public interface IdPersona {
     @Override

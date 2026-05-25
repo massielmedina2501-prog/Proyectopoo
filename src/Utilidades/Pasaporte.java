@@ -1,6 +1,6 @@
 package Utilidades;
 
-//Denisse Alejandra Manzor Tapia
+//Denisse Manzor Tapia
 public class Pasaporte implements IdPersona {
     private String numero;
     private String nacionalidad;
