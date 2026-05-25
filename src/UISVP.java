@@ -1,3 +1,7 @@
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class UISVP {
@@ -112,7 +116,12 @@ public class UISVP {
             System.out.println("Error en la creacion de la empresa.");
         }
     }
-    private void contratarTripulante(){}
+    private void contratarTripulante(){
+        System.out.println("...:::: Contratando un nuevo Tripulante ::::....");
+        try {
+
+        }
+    }
     private void createTerminal(){
         System.out.println("...:::: Creando un nuevo terminal ::::....");
         try {
@@ -173,7 +182,57 @@ public class UISVP {
             System.out.println("Error");
         }
     }
-    private void createViaje(){}
+    private void createViaje(){
+        System.out.println("...:::: Creando un nuevo Viaje::::....");
+
+        LocalDate fecha = null;
+        while(fecha == null) {
+            System.out.println("Ingrese Fecha en formato [dd/mm/yyyy]:");
+            try {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                fecha = LocalDate.parse(sc.nextLine().trim(), formatter);
+            } catch (DateTimeParseException e) {
+                System.out.println("Error: formalto de fecha incorrecto. Intente nuevamente");
+            }
+        }
+        LocalDate hora = null;
+        while(hora == null) {
+            System.out.println("Ingrese Hora en formato [HH:MM]: ");
+            try{
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+                hora = LocalDate.parse(sc.nextLine().trim(), formatter);
+            } catch (DateTimeParseException e) {
+                System.out.println("Error: formato de hora incorrectos. Intente denuevo");
+            }
+        }
+        int precio = 0;
+        while (precio <= 0){
+            System.out.println("Ingrese el Precio del viaje: ");
+        }try {
+            precio = Integer.parseInt(sc.nextLine().trim());
+            if(precio <= 0) System.out.println("Error el precio no puede ser menor que 0");
+        }catch (NumberFormatException e){
+            System.out.println("Error ingrese un valor valido");
+        }
+        String patente = "";
+        while(patente.isEmpty()){
+            System.out.println("Ingrese la patente del bus: ");
+            patente = sc.nextLine().trim();
+            if(patente.isEmpty()) System.out.println("Error la patente no puede estar en blanco");
+        }
+        int nroDeCnductores = 0;
+        while(nroDeCnductores != 1 && nroDeCnductores != 2 ){
+            System.out.println("Ingres el numero de conductores 1 o 2: ");
+        }try {
+            nroDeCnductores = Integer.parseInt(sc.nextLine().trim());
+            if(nroDeCnductores != 1 && nroDeCnductores != 2 ) System.out.println("Error el nunmero de conductores debe ser 1 o 2");
+        }catch (NumberFormatException e){
+            System.out.println("Error ingrese una cantida vlaida de conductores");
+        }
+        IdPersona
+
+
+    }
     private void venderPasaje(){}
     private void pagaVentaPasaje(){}
     private void listVentas(){}
