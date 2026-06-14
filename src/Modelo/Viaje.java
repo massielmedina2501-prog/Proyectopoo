@@ -101,13 +101,12 @@ public class Viaje {
     public Terminal getTerminalLlegada() {
         return terminalLlegada;
     }
-
-    public Pasaje[] getPasajes() {
-        return pasajes.toArray(new Pasaje[0]);
+    public ArrayList<Pasaje> getPasajes() {
+        return pasajes;
     }
 
-    public Venta[] getVentas() {
-        return ventas.toArray(new Venta[0]);
+    public ArrayList<Venta> getVentas() {
+        return ventas;
     }
 
     public boolean addConductor(Conductor conductor) {

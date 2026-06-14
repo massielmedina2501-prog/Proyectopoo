@@ -39,11 +39,11 @@ public class Terminal {
         }
     }
 
-    public Viaje[] getSalidas() {
-        return salida.toArray(new Viaje[0]);
+    public ArrayList<Viaje> getSalidas() {
+        return salida;
     }
 
-    public Viaje[] getLlegadas() {
-        return llegada.toArray(new Viaje[0]);
+    public ArrayList<Viaje> getLlegadas() {
+        return llegada;
     }
 }

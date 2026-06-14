@@ -57,7 +57,7 @@ public class Bus {
         }
     }
 
-    public Viaje[] getViajes() {
-        return viajes.toArray(new Viaje[0]);
+    public ArrayList<Viaje> getViajes() {
+        return viajes;
     }
 }

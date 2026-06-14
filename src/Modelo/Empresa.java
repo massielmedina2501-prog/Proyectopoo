@@ -2,6 +2,7 @@ package Modelo;
 
 import Utilidades.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Empresa {
 
@@ -48,8 +49,8 @@ public class Empresa {
         }
     }
 
-    public Bus[] getBuses() {
-        return buses.toArray(new Bus[0]);
+    public ArrayList<Bus> getBuses() {
+        return buses;
     }
 
     public boolean addConductor(IdPersona id, Nombre nom, Direccion dir) {
@@ -84,21 +85,12 @@ public class Empresa {
         return true;
     }
 
-    public Tripulante[] getTripulantes() {
 
+    public List<Tripulante> getTripulantes() {
         ArrayList<Tripulante> lista = new ArrayList<>();
-
         lista.addAll(conductores);
         lista.addAll(auxiliares);
-
-        return lista.toArray(new Tripulante[0]);
-    }
-
-    public void addVenta(Venta venta) {
-
-        if (venta != null) {
-            ventas.add(venta);
-        }
+        return lista;
     }
 
     public Venta[] getVentas() {

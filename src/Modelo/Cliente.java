@@ -1,34 +1,43 @@
 package Modelo;
 
-import Utilidades.*;
 import java.util.ArrayList;
+import java.util.List;
+import Utilidades.*;
 
 public class Cliente extends Persona {
+    private String email;
+    private List<Venta> ventas; // Asumiendo que es una lista de ventas
 
-    private Direccion direccion;
-    private ArrayList<Venta> ventas;
-
-    public Cliente(IdPersona id, Nombre nombre, Direccion direccion) {
+    // Constructor corregido según instrucciones:
+    // Persona entrega id y nombre, se agrega email.
+    public Cliente(IdPersona id, Nombre nombre, String email) {
         super(id, nombre);
-        this.direccion = direccion;
+        this.email = email;
         this.ventas = new ArrayList<>();
     }
 
-    public Direccion getDireccion() {
-        return direccion;
+    // Getters y Setters
+    public String getEmail() {
+        return email;
     }
 
-    public void setDireccion(Direccion direccion) {
-        this.direccion = direccion;
+    public void setEmail(String email) {
+        this.email = email;
     }
+
+    public List<Venta> getVentas() {
+        return ventas;
+    }
+
 
     public void addVenta(Venta venta) {
-        if (venta != null) {
-            ventas.add(venta);
-        }
+        this.ventas.add(venta);
     }
 
-    public Venta[] getVentas() {
-        return ventas.toArray(new Venta[0]);
+    @Override
+    public String toString() {
+        return super.toString() + "\nEmail: " + email;
     }
+
+
 }
