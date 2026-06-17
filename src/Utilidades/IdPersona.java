@@ -2,7 +2,8 @@ package Utilidades;
 
 //Denisse Alejandra Manzor Tapia
 
-public interface IdPersona {
+
+public interface IdPersona{
     @Override
     public String toString();
     @Override

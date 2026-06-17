@@ -1,15 +1,15 @@
 package Modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import Utilidades.*;
 
-public class Cliente extends Persona {
+public class Cliente extends Persona implements Serializable {
     private String email;
-    private List<Venta> ventas; // Asumiendo que es una lista de ventas
+    private List<Venta> ventas;
 
-    // Constructor corregido según instrucciones:
-    // Persona entrega id y nombre, se agrega email.
+
     public Cliente(IdPersona id, Nombre nombre, String email) {
         super(id, nombre);
         this.email = email;

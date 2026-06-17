@@ -1,6 +1,8 @@
 package Modelo;
 
-public class Pasaje {
+import java.io.Serializable;
+
+public class Pasaje implements Serializable {
 
     private long numero;
     private int asiento;
@@ -52,7 +54,8 @@ public class Pasaje {
 
 
         sb.append(String.format("%-20s %-15s %-25s\n", "Patente bus", "Asiento", "Valor Pagado"));
-        sb.append(String.format("%-20s %-15d %-25d\n", this.getViaje().getBus().getPatente(), this.asiento, this.venta));
+        // CORRECCIÓN: Cambiamos 'this.venta' por 'this.getViaje().getPrecio()' para pasarle un entero al %d
+        sb.append(String.format("%-20s %-15d %-25d\n", this.getViaje().getBus().getPatente(), this.asiento, this.getViaje().getPrecio()));
 
 
         sb.append(String.format("%-20s %-20s %-15s %-10s\n", "Terminal origen", "Terminal destino", "Fecha", "Hora"));

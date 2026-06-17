@@ -4,6 +4,10 @@ import Modelo.*;
 import Utilidades.*;
 import Excepciones.*;
 import Persistencia.IOSVP;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -44,15 +48,29 @@ public class SistemaVentaPasajes {
         pasajeros.add(p);
     }
 
-    public void createViaje(LocalDate fecha, LocalTime hora, int precio, int duracion, String patBus, IdPersona[] idTripulantes, String[] nomComunas) throws SVPException {
-        Bus bus = cEmp.findBus(patBus).orElseThrow(() -> new SVPException("Bus no encontrado."));
-        Terminal tOrig = cEmp.findTerminal(nomComunas[0]).orElseThrow(() -> new SVPException("Terminal origen no encontrado."));
-        Terminal tDest = cEmp.findTerminal(nomComunas[1]).orElseThrow(() -> new SVPException("Terminal destino no encontrado."));
+    public void createViaje(LocalDate fecha, LocalTime hora, int precio, int duracion,
+                            String patBus, IdPersona[] idTripulantes,
+                            String[] nomTerminales) throws SVPException {
 
-        Auxiliar aux = cEmp.findAuxiliar(idTripulantes[0], bus.getEmpresa().getRut()).orElseThrow(() -> new SVPException("Auxiliar no válido."));
+        Bus bus = cEmp.findBus(patBus)
+                .orElseThrow(() -> new SVPException("Bus no encontrado."));
+
+        Terminal tOrig = cEmp.findTerminal(nomTerminales[0])
+                .orElseThrow(() -> new SVPException("Terminal origen no encontrado."));
+
+        Terminal tDest = cEmp.findTerminal(nomTerminales[1])
+                .orElseThrow(() -> new SVPException("Terminal destino no encontrado."));
+
+        Auxiliar aux = cEmp.findAuxiliar(idTripulantes[0], bus.getEmpresa().getRut())
+                .orElseThrow(() -> new SVPException("Auxiliar no válido."));
+
         ArrayList<Conductor> conds = new ArrayList<>();
-        for(int i=1; i<idTripulantes.length; i++) {
-            conds.add(cEmp.findConductor(idTripulantes[i], bus.getEmpresa().getRut()).orElseThrow(() -> new SVPException("Conductor no válido.")));
+
+        for (int i = 1; i < idTripulantes.length; i++) {
+            conds.add(
+                    cEmp.findConductor(idTripulantes[i], bus.getEmpresa().getRut())
+                            .orElseThrow(() -> new SVPException("Conductor no válido."))
+            );
         }
 
         Viaje v = new Viaje(fecha, hora, precio, duracion, bus, aux, conds, tOrig, tDest);
@@ -65,17 +83,24 @@ public class SistemaVentaPasajes {
         ventas.add(new Venta(idDoc, tipo, fechaViaje, c));
     }
 
-    // --- MÉTODOS DE CONSULTA
-    public String[][] getHorariosDisponibles(LocalDate fechaViaje, String comSalida, String comLlegada, int nroPasajes) {
+    public String[][] getHorariosDisponibles(LocalDate fechaViaje,
+                                             String terminalSalida,
+                                             String terminalLlegada,
+                                             int nroPasajes) {
+
         return viajes.stream()
                 .filter(v -> v.getFecha().equals(fechaViaje) &&
-                        v.getTerminalSalida().getNombre().equalsIgnoreCase(comSalida) &&
-                        v.getTerminalLlegada().getNombre().equalsIgnoreCase(comLlegada) &&
+                        v.getTerminalSalida().getNombre().equalsIgnoreCase(terminalSalida) &&
+                        v.getTerminalLlegada().getNombre().equalsIgnoreCase(terminalLlegada) &&
                         v.getNroAsientosDisponibles() >= nroPasajes)
-                .map(v -> new String[]{ v.getHora().toString(), v.getBus().getPatente(), String.valueOf(v.getPrecio()), String.valueOf(v.getNroAsientosDisponibles()) })
+                .map(v -> new String[]{
+                        v.getBus().getPatente(),
+                        v.getHora().toString(),
+                        String.valueOf(v.getPrecio()),
+                        String.valueOf(v.getNroAsientosDisponibles())
+                })
                 .toArray(String[][]::new);
     }
-
     public Optional<String> getNombrePasajero(IdPersona idPasajero) {
         return findPasajero(idPasajero).map(p -> p.getNombreCompleto().toString());
     }
@@ -95,8 +120,24 @@ public class SistemaVentaPasajes {
     }
 
     public void generatePasajesVenta(String idDocumento, TipoDocumento tipo) throws SVPException {
-        Venta v = findVenta(idDocumento, tipo).orElseThrow(() -> new SVPException("Venta no encontrada."));
-        IOSVP.savePasajesDeVenta(v.getPasajes(), "Pasajes_" + idDocumento + ".txt");
+        // 1. Buscas la venta (manteniendo tu lógica con Optional)
+        Venta v = findVenta(idDocumento, tipo)
+                .orElseThrow(() -> new SVPException("Venta no encontrada."));
+
+        // 2. Armas el nombre EXACTO como lo pide la guía (id + tipo en minúsculas)
+        String nombreArchivo = idDocumento + tipo.name().toLowerCase() + ".txt";
+
+        // 3. Escribes el archivo usando el toString() que creaste
+        try (PrintWriter writer = new PrintWriter(new FileWriter(nombreArchivo))) {
+
+            for (Pasaje pasaje : v.getPasajes()) {
+                writer.print(pasaje.toString());
+                writer.println(); // Espacio en blanco entre pasajes
+            }
+
+        } catch (IOException e) {
+            throw new SVPException("Error al guardar el archivo de texto: " + e.getMessage());
+        }
     }
 
     public void pagaVenta(String idDoc, TipoDocumento tipo) throws SVPException {

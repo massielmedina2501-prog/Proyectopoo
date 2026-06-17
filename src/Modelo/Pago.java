@@ -1,6 +1,8 @@
 package Modelo;
 
-public class Pago {
+import java.io.Serializable;
+
+public class Pago implements Serializable {
 
     private int monto;
 

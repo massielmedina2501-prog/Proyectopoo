@@ -1,9 +1,12 @@
 package Utilidades;
 
+import java.io.Serializable;
+
 //Denisse Alejandra Manzor Tapia
-public class Rut implements IdPersona{
+public class Rut implements IdPersona, Serializable {
     private int numero;
     private char dv;
+    private static final long serialVersionUID = 1L;
 
     public Rut(int num, char dv) {
         this.numero = num;

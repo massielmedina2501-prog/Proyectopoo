@@ -28,11 +28,11 @@ public class ControladorEmpresas {
     }
 
 
-    public void setInstanciaPersistente(ControladorEmpresas inst) {
+    protected void setInstanciaPersistente(ControladorEmpresas inst) {
         instance = inst;
     }
 
-    public void setDatosIniciales(Object[] objetos) {
+    protected void setDatosIniciales(Object[] objetos) {
         this.empresas = (ArrayList<Empresa>) objetos[0];
         this.terminales = (ArrayList<Terminal>) objetos[1];
     }
@@ -90,12 +90,12 @@ public class ControladorEmpresas {
     }
 
     // --- BÚSQUEDAS
-    public Optional<Empresa> findEmpresa(Rut rut) { return empresas.stream().filter(e -> e.getRut().equals(rut)).findFirst(); }
-    public Optional<Terminal> findTerminal(String nombre) { return terminales.stream().filter(t -> t.getNombre().equalsIgnoreCase(nombre)).findFirst(); }
-    public Optional<Terminal> findTerminalPorComuna(String comuna) { return terminales.stream().filter(t -> t.getDireccion().getComuna().equalsIgnoreCase(comuna)).findFirst(); }
-    public Optional<Bus> findBus(String patente) { return empresas.stream().flatMap(e -> e.getBuses().stream()).filter(b -> b.getPatente().equalsIgnoreCase(patente)).findFirst(); }
+    protected Optional<Empresa> findEmpresa(Rut rut) { return empresas.stream().filter(e -> e.getRut().equals(rut)).findFirst(); }
+    protected Optional<Terminal> findTerminal(String nombre) { return terminales.stream().filter(t -> t.getNombre().equalsIgnoreCase(nombre)).findFirst(); }
+    protected Optional<Terminal> findTerminalPorComuna(String comuna) { return terminales.stream().filter(t -> t.getDireccion().getComuna().equalsIgnoreCase(comuna)).findFirst(); }
+    protected Optional<Bus> findBus(String patente) { return empresas.stream().flatMap(e -> e.getBuses().stream()).filter(b -> b.getPatente().equalsIgnoreCase(patente)).findFirst(); }
 
-    public Optional<Conductor> findConductor(IdPersona id, Rut rutEmp) {
+    protected Optional<Conductor> findConductor(IdPersona id, Rut rutEmp) {
         return findEmpresa(rutEmp)
                 .flatMap(e -> e.getTripulantes().stream()
                         .filter(t -> t instanceof Conductor)
@@ -103,7 +103,7 @@ public class ControladorEmpresas {
                         .filter(c -> c.getIdPersona().equals(id))
                         .findFirst());
     }
-    public Optional<Auxiliar> findAuxiliar(IdPersona id, Rut rutEmp) {
+    protected Optional<Auxiliar> findAuxiliar(IdPersona id, Rut rutEmp) {
         return findEmpresa(rutEmp)
                 .flatMap(e -> e.getTripulantes().stream()
                         .filter(t -> t instanceof Auxiliar)

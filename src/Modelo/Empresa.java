@@ -1,10 +1,12 @@
 package Modelo;
 
 import Utilidades.*;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Empresa {
+public class Empresa implements Serializable {
 
     private Rut rut;
     private String nombre;
