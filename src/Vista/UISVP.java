@@ -120,19 +120,26 @@ public class UISVP {
         } while (opcion != 18);
     }
 
+
     private void createEmpresa() {
-        try {
-            System.out.print("Rut empresa: ");
-            Rut rut = Rut.of(sc.nextLine());
-            System.out.print("Nombre empresa: ");
-            String nombre = sc.nextLine();
-            System.out.print("URL empresa: ");
-            String url = sc.nextLine();
-            ControladorEmpresas.getInstance().createEmpresa(rut, nombre, url);
-            System.out.println("Empresa creada exitosamente");
-        } catch (SVPException e) {
-            System.out.println(e.getMessage());
-        }
+
+            try {
+
+                    System.out.print("Rut empresa: ");
+                    Rut rut = Rut.of(sc.nextLine());
+                    System.out.print("Nombre empresa: ");
+                    String nombre = sc.nextLine();
+                    System.out.print("URL empresa: ");
+                    String url = sc.nextLine();
+                if (rut == null || nombre.isBlank() || url.isBlank()) {
+                    throw new SVPException("Todos los campos son obligatorios");
+                }
+                    ControladorEmpresas.getInstance().createEmpresa(rut, nombre, url);
+                    System.out.println("Empresa creada exitosamente");
+            } catch (SVPException e) {
+                System.out.println(e.getMessage());
+            }
+
     }
 
     private void contratarTripulante() {
