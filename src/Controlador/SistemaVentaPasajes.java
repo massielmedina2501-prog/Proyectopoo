@@ -1,5 +1,5 @@
 package Controlador;
-//Massiel Medina y Luis Reyes
+
 import Modelo.*;
 import Utilidades.*;
 import Excepciones.*;
@@ -120,19 +120,19 @@ public class SistemaVentaPasajes {
     }
 
     public void generatePasajesVenta(String idDocumento, TipoDocumento tipo) throws SVPException {
-        
+        // 1. Buscas la venta (manteniendo tu lógica con Optional)
         Venta v = findVenta(idDocumento, tipo)
                 .orElseThrow(() -> new SVPException("Venta no encontrada."));
 
-        
+        // 2. Armas el nombre EXACTO como lo pide la guía (id + tipo en minúsculas)
         String nombreArchivo = idDocumento + tipo.name().toLowerCase() + ".txt";
 
-        
+        // 3. Escribes el archivo usando el toString() que creaste
         try (PrintWriter writer = new PrintWriter(new FileWriter(nombreArchivo))) {
 
             for (Pasaje pasaje : v.getPasajes()) {
                 writer.print(pasaje.toString());
-                writer.println(); 
+                writer.println(); // Espacio en blanco entre pasajes
             }
 
         } catch (IOException e) {

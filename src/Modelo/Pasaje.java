@@ -54,7 +54,7 @@ public class Pasaje implements Serializable {
 
 
         sb.append(String.format("%-20s %-15s %-25s\n", "Patente bus", "Asiento", "Valor Pagado"));
-        // CORRECCIÓN: Cambiamos 'this.venta' por 'this.getViaje().getPrecio()' para pasarle un entero al %d
+
         sb.append(String.format("%-20s %-15d %-25d\n", this.getViaje().getBus().getPatente(), this.asiento, this.getViaje().getPrecio()));
 
 
