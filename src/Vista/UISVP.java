@@ -2,30 +2,30 @@ package Vista;
 //Luis Reyes
 
 //ESTA CLASE YA NO SIRVE
-//import java.time.LocalDate;
-//import java.time.LocalTime;
-//import java.time.format.DateTimeFormatter;
-//import java.time.format.DateTimeParseException;
-//import java.util.Scanner;
-//import Utilidades.*;
-//import Modelo.*;
-//import Controlador.*;
-//import Excepciones.SVPException;
-//
-//public class UISVP {
-//    private Scanner sc;
-//    private static UISVP instance = null;
-//
-//    private UISVP() {
-//        sc = new Scanner(System.in);
-//    }
-//
-//    public static UISVP getInstance() {
-//        if (instance == null) {
-//            instance = new UISVP();
-//        }
-//        return instance;
-//    }
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+import Utilidades.*;
+import Modelo.*;
+import Controlador.*;
+import Excepciones.SVPException;
+
+public class UISVP {
+    private Scanner sc;
+    private static UISVP instance = null;
+
+    private UISVP() {
+        sc = new Scanner(System.in);
+    }
+
+    public static UISVP getInstance() {
+        if (instance == null) {
+            instance = new UISVP();
+        }
+        return instance;
+    }
 
     public void menu() {
         int opcion;
