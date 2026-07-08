@@ -20,4 +20,6 @@ public class CrearViaje {
     private JButton registrarButton;
     private JButton cancelarButton1;
     private JPanel viaje2;
+
+    private JPanel viaje3;//no tomar en cuenta es para hacer commit
 }
