@@ -111,4 +111,36 @@ public class ControladorEmpresas {
                         .filter(a -> a.getIdPersona().equals(id))
                         .findFirst());
     }
+
+
+    public String[] getPatentesBusesPorEmpresa(String rutEmpStr) {
+        Rut rutEmp = Rut.of(rutEmpStr);
+        return findEmpresa(rutEmp)
+                .map(e -> e.getBuses().stream().map(Bus::getPatente).toArray(String[]::new))
+                .orElse(new String[0]);
+    }
+
+    public IdPersona[] getConductoresPorEmpresa(String rutEmpStr) {
+        Rut rutEmp = Rut.of(rutEmpStr);
+        return findEmpresa(rutEmp)
+                .map(e -> e.getTripulantes().stream()
+                        .filter(t -> t instanceof Conductor)
+                        .map(t -> t.getIdPersona())
+                        .toArray(IdPersona[]::new))
+                .orElse(new IdPersona[0]);
+    }
+
+    public IdPersona[] getAuxiliaresPorEmpresa(String rutEmpStr) {
+        Rut rutEmp = Rut.of(rutEmpStr);
+        return findEmpresa(rutEmp)
+                .map(e -> e.getTripulantes().stream()
+                        .filter(t -> t instanceof Auxiliar)
+                        .map(t -> t.getIdPersona())
+                        .toArray(IdPersona[]::new))
+                .orElse(new IdPersona[0]);
+    }
+
+    public String[] getNombresTerminales() {
+        return terminales.stream().map(Terminal::getNombre).toArray(String[]::new);
+    }
 }

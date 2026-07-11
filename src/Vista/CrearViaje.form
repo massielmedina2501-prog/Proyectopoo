@@ -4,24 +4,32 @@
     <constraints>
       <xy x="20" y="20" width="786" height="400"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-1"/>
+    </properties>
     <border type="none"/>
     <children>
-      <grid id="2a3e0" binding="Viaje" layout-manager="GridLayoutManager" row-count="8" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="2a3e0" binding="Viaje" layout-manager="GridLayoutManager" row-count="8" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <card name="Card1"/>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-1"/>
+        </properties>
         <border type="none"/>
         <children>
-          <component id="c9c29" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+          <component id="c9c29" class="javax.swing.JComboBox" binding="empresa">
             <constraints>
-              <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="1" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="400" height="20"/>
               </grid>
             </constraints>
             <properties>
+              <background color="-1"/>
+              <editable value="false"/>
+              <font name="Berlin Sans FB" size="16" style="0"/>
+              <foreground color="-15132132"/>
               <model/>
             </properties>
           </component>
@@ -31,6 +39,7 @@
             </constraints>
             <properties>
               <font name="Times New Roman" size="18" style="0"/>
+              <foreground color="-15132132"/>
               <text value="Seleccione una empresa:"/>
             </properties>
           </component>
@@ -40,6 +49,7 @@
             </constraints>
             <properties>
               <font name="Times New Roman" size="18" style="0"/>
+              <foreground color="-15132132"/>
               <text value="Fecha:"/>
             </properties>
           </component>
@@ -49,16 +59,9 @@
             </constraints>
             <properties>
               <font name="Times New Roman" size="18" style="0"/>
+              <foreground color="-15132132"/>
               <text value="Duracion:"/>
             </properties>
-          </component>
-          <component id="bd183" class="javax.swing.JTextField" binding="textField1" default-binding="true">
-            <constraints>
-              <grid row="2" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="400" height="40"/>
-              </grid>
-            </constraints>
-            <properties/>
           </component>
           <component id="eaaa1" class="javax.swing.JLabel">
             <constraints>
@@ -66,28 +69,25 @@
             </constraints>
             <properties>
               <font name="Times New Roman" size="18" style="0"/>
+              <foreground color="-15132132"/>
               <text value="Terminal de salida:"/>
             </properties>
           </component>
-          <component id="38b65" class="javax.swing.JSpinner" binding="spinner3" default-binding="true">
+          <component id="38b65" class="javax.swing.JSpinner" binding="duracion">
             <constraints>
-              <grid row="4" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="4" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="400" height="40"/>
               </grid>
             </constraints>
-            <properties/>
-          </component>
-          <component id="6c611" class="javax.swing.JTextField" binding="textField2" default-binding="true">
-            <constraints>
-              <grid row="5" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="400" height="40"/>
-              </grid>
-            </constraints>
-            <properties/>
+            <properties>
+              <background color="-1"/>
+              <font name="Berlin Sans FB" size="16" style="0"/>
+              <foreground color="-15132132"/>
+            </properties>
           </component>
           <hspacer id="5ba20">
             <constraints>
-              <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="0" fill="1" indent="0" use-parent-layout="false">
+              <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="180" height="11"/>
               </grid>
             </constraints>
@@ -99,25 +99,20 @@
             <properties>
               <enabled value="true"/>
               <font name="Times New Roman" size="18" style="0"/>
+              <foreground color="-15132132"/>
               <text value="Hora:"/>
             </properties>
           </component>
-          <component id="73008" class="javax.swing.JSpinner" binding="spinner1" default-binding="true">
+          <component id="73008" class="javax.swing.JSpinner" binding="hora">
             <constraints>
-              <grid row="3" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="3" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="400" height="40"/>
               </grid>
             </constraints>
-            <properties/>
-          </component>
-          <component id="43636" class="javax.swing.JButton" binding="siguienteButton" default-binding="true">
-            <constraints>
-              <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="400" height="85"/>
-              </grid>
-            </constraints>
             <properties>
-              <text value="Siguiente"/>
+              <background color="-1"/>
+              <font name="Berlin Sans FB" size="16" style="0"/>
+              <foreground color="-15132132"/>
             </properties>
           </component>
           <component id="2b5a1" class="javax.swing.JButton" binding="cancelarButton" default-binding="true">
@@ -127,17 +122,22 @@
               </grid>
             </constraints>
             <properties>
+              <background color="-64256"/>
+              <font name="Berlin Sans FB" size="18" style="0"/>
+              <foreground color="-15132132"/>
               <text value="Cancelar "/>
             </properties>
           </component>
           <grid id="1300b" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="3" vsize-policy="1" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+              <grid row="0" column="1" row-span="1" col-span="4" vsize-policy="1" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <preferred-size width="100" height="50"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-1"/>
+            </properties>
             <border type="none"/>
             <children>
               <component id="18dbe" class="javax.swing.JLabel">
@@ -146,6 +146,7 @@
                 </constraints>
                 <properties>
                   <font name="Lucida Sans Typewriter" size="18" style="0"/>
+                  <foreground color="-15132132"/>
                   <text value="Bienvenido ingrese los datos de viaje..."/>
                 </properties>
               </component>
@@ -157,16 +158,58 @@
             </constraints>
             <properties>
               <font name="Times New Roman" size="18" style="0"/>
+              <foreground color="-15132132"/>
               <text value="Terminal de llegada:"/>
             </properties>
           </component>
-          <component id="2afe3" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+          <component id="2934" class="javax.swing.JComboBox" binding="Tsalida">
             <constraints>
-              <grid row="6" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="5" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="400" height="20"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+              <font name="Berlin Sans FB" size="16" style="0"/>
+              <foreground color="-15132132"/>
+            </properties>
+          </component>
+          <component id="8b123" class="javax.swing.JComboBox" binding="Tllegada">
+            <constraints>
+              <grid row="6" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="400" height="20"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+              <font name="Berlin Sans FB" size="16" style="0"/>
+              <foreground color="-15132132"/>
+            </properties>
+          </component>
+          <component id="d5f19" class="javax.swing.JSpinner" binding="fecha">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="400" height="40"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-1"/>
+              <font name="Berlin Sans FB" size="16" style="0"/>
+              <foreground color="-15132132"/>
+            </properties>
+          </component>
+          <component id="43636" class="javax.swing.JButton" binding="siguienteButton" default-binding="true">
+            <constraints>
+              <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="400" height="85"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-10682568"/>
+              <font name="Berlin Sans FB" size="18" style="0"/>
+              <foreground color="-15132132"/>
+              <text value="Siguiente"/>
+            </properties>
           </component>
         </children>
       </grid>
@@ -175,7 +218,9 @@
         <constraints>
           <card name="Card2"/>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-1"/>
+        </properties>
         <border type="none"/>
         <children>
           <component id="cd39c" class="javax.swing.JLabel">
@@ -184,6 +229,7 @@
             </constraints>
             <properties>
               <font name="Times New Roman" size="18" style="0"/>
+              <foreground color="-15132132"/>
               <text value="Precio:"/>
             </properties>
           </component>
@@ -193,6 +239,7 @@
             </constraints>
             <properties>
               <font name="Times New Roman" size="18" style="0"/>
+              <foreground color="-15132132"/>
               <text value="Bus:"/>
             </properties>
           </component>
@@ -202,6 +249,7 @@
             </constraints>
             <properties>
               <font name="Times New Roman" size="18" style="0"/>
+              <foreground color="-15132132"/>
               <text value="Conductor:"/>
             </properties>
           </component>
@@ -211,32 +259,45 @@
             </constraints>
             <properties>
               <font name="Times New Roman" size="18" style="0"/>
+              <foreground color="-15132132"/>
               <text value="Auxiliar:"/>
             </properties>
           </component>
-          <component id="da89f" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+          <component id="da89f" class="javax.swing.JTextField" binding="precio">
             <constraints>
               <grid row="1" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="400" height="40"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-1"/>
+              <font name="Berlin Sans FB" size="16" style="0"/>
+              <foreground color="-15132132"/>
+            </properties>
           </component>
-          <component id="70d3b" class="javax.swing.JComboBox" binding="comboBox2" default-binding="true">
+          <component id="70d3b" class="javax.swing.JComboBox" binding="bus">
             <constraints>
               <grid row="2" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="400" height="20"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-1"/>
+              <font name="Berlin Sans FB" size="16" style="0"/>
+              <foreground color="-15132132"/>
+            </properties>
           </component>
-          <component id="24927" class="javax.swing.JComboBox" binding="comboBox3" default-binding="true">
+          <component id="24927" class="javax.swing.JComboBox" binding="conductor">
             <constraints>
               <grid row="3" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="400" height="20"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-1"/>
+              <font name="Berlin Sans FB" size="16" style="0"/>
+              <foreground color="-15132132"/>
+            </properties>
           </component>
           <hspacer id="bdafc">
             <constraints>
@@ -266,6 +327,9 @@
               </grid>
             </constraints>
             <properties>
+              <background color="-10682568"/>
+              <font name="Berlin Sans FB" size="18" style="0"/>
+              <foreground color="-15132132"/>
               <text value="Registrar"/>
             </properties>
           </component>
@@ -276,6 +340,9 @@
               </grid>
             </constraints>
             <properties>
+              <background color="-64256"/>
+              <font name="Berlin Sans FB" size="18" style="0"/>
+              <foreground color="-15132132"/>
               <text value="Cancelar"/>
             </properties>
           </component>
@@ -286,13 +353,17 @@
               </grid>
             </constraints>
           </vspacer>
-          <component id="6fb41" class="javax.swing.JComboBox" binding="comboBox4" default-binding="true">
+          <component id="6fb41" class="javax.swing.JComboBox" binding="auxiliar">
             <constraints>
               <grid row="4" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="400" height="20"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-1"/>
+              <font name="Berlin Sans FB" size="16" style="0"/>
+              <foreground color="-15132132"/>
+            </properties>
           </component>
         </children>
       </grid>

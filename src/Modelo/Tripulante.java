@@ -25,7 +25,7 @@ public class Tripulante extends Persona implements Serializable {
     }
 
     public void addViaje(Viaje viaje) {
-        if (viaje != null) {
+        if (viaje != null && !viajes.contains(viaje)) {
             viajes.add(viaje);
         }
     }

@@ -53,7 +53,7 @@ public class Bus implements Serializable {
 
     public void addViaje(Viaje viaje) {
 
-        if (viaje != null) {
+        if (viaje != null && !viajes.contains(viaje)) {
             viajes.add(viaje);
         }
     }

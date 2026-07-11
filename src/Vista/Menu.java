@@ -1,9 +1,11 @@
 package Vista;
-
+//Massiel Medina
 import Controlador.SistemaVentaPasajes;
 import Excepciones.SVPException;
 
 import javax.swing.*;
+import java.awt.*;
+import java.net.URL;
 
 public class Menu extends JFrame {
 
@@ -15,6 +17,11 @@ public class Menu extends JFrame {
     private JButton comprarPasajesButton;
     private JButton ingresarViajesButton;
     private JPanel PANEL1;
+    private JLabel banner;
+    private JPanel compraeingresodeV;
+    private JPanel listaysalir;
+    private JLabel Datosdelsistema;
+    private JPanel Sistema;
 
     private final SistemaVentaPasajes sistema = SistemaVentaPasajes.getInstance();
 
@@ -25,6 +32,32 @@ public class Menu extends JFrame {
         setContentPane(PANEL1);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
+
+        //BANNER
+        URL ruta = getClass().getResource("/icons/Bienvenido.png");
+        System.out.println("Ruta del recurso: " + ruta);
+        if (ruta != null) {
+            ImageIcon icon = new ImageIcon(ruta);
+
+            int anchoBanner = 1600;
+            int altoBanner = 130;
+
+            Image imagen = icon.getImage().getScaledInstance(
+                    anchoBanner,
+                    altoBanner,
+                    Image.SCALE_SMOOTH
+            );
+            banner.setIcon(new ImageIcon(imagen));
+
+            banner.setPreferredSize(new Dimension(anchoBanner, altoBanner));
+            banner.setMinimumSize(new Dimension(anchoBanner, altoBanner));
+        } else {
+            System.err.println("Error: No se pudo encontrar la imagen en /icons/Bienvenido.png");
+            JOptionPane.showMessageDialog(this,
+                    "No se encontró la imagen del banner. Verifica el nombre del archivo.",
+                    "Error de Recursos",
+                    JOptionPane.WARNING_MESSAGE);
+        }
 
      
 
@@ -59,12 +92,14 @@ public class Menu extends JFrame {
 
         comprarPasajesButton.addActionListener(e -> {
             JOptionPane.showMessageDialog(this, "Abrir ventana de compra de pasajes");
-            // new VentanaCompraPasajes().setVisible(true);
+            new VentaPasajes().setVisible(true);
         });
 
         ingresarViajesButton.addActionListener(e -> {
             JOptionPane.showMessageDialog(this, "Abrir ventana de ingreso de viajes");
-            // new VentanaViajes().setVisible(true);
+            CrearViaje crearViaje = new CrearViaje(this);
+            setVisible(false);
+            crearViaje.setVisible(true);
         });
 
         listasButton.addActionListener(e -> {
@@ -85,6 +120,7 @@ public class Menu extends JFrame {
                 System.exit(0);
             }
         });
+
 
         setVisible(true);
     }

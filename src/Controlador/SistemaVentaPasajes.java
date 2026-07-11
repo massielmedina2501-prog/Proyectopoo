@@ -5,6 +5,7 @@ import Utilidades.*;
 import Excepciones.*;
 import Persistencia.IOSVP;
 
+import javax.swing.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -72,10 +73,12 @@ public class SistemaVentaPasajes {
                             .orElseThrow(() -> new SVPException("Conductor no válido."))
             );
         }
+        if (findViaje(fecha, hora, patBus).isPresent()) {
+            throw new SVPException("Ya existe un viaje para ese bus en esa fecha y hora.");
+        }
 
         Viaje v = new Viaje(fecha, hora, precio, duracion, bus, aux, conds, tOrig, tDest);
         viajes.add(v);
-        bus.addViaje(v);
     }
 
     public void iniciaVenta(String idDoc, TipoDocumento tipo, LocalDate fechaViaje, String comSalida, String comLlegada, IdPersona idCliente, int nroPasajes) throws SVPException {
@@ -159,7 +162,8 @@ public class SistemaVentaPasajes {
     public String[][] listViajes() {
         return viajes.stream().map(v -> new String[]{
                 v.getFecha().toString(), v.getHora().toString(), String.valueOf(v.getPrecio()),
-                String.valueOf(v.getNroAsientosDisponibles()), v.getBus().getPatente()
+                String.valueOf(v.getNroAsientosDisponibles()), v.getBus().getPatente(), v.getTerminalSalida().getNombre(),
+                v.getTerminalLlegada().getNombre()
         }).toArray(String[][]::new);
     }
 

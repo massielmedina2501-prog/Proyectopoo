@@ -25,7 +25,9 @@ public class Viaje implements Serializable {
     private ArrayList<Pasaje> pasajes;
     private ArrayList<Venta> ventas;
 
-    public Viaje(LocalDate fecha, LocalTime hora, int precio, int duracion, Bus bus, Auxiliar auxiliar, ArrayList<Conductor> conductores, Terminal terminalSalida, Terminal terminalLlegada) {
+    public Viaje(LocalDate fecha, LocalTime hora, int precio, int duracion,
+                 Bus bus, Auxiliar auxiliar, ArrayList<Conductor> conductores,
+                 Terminal terminalSalida, Terminal terminalLlegada) {
 
         this.fecha = fecha;
         this.hora = hora;
@@ -48,6 +50,12 @@ public class Viaje implements Serializable {
 
         if (auxiliar != null) {
             auxiliar.addViaje(this);
+        }
+
+        if (conductores != null) {
+            for (Conductor conductor : conductores) {
+                addConductor(conductor);
+            }
         }
 
         if (terminalSalida != null) {
@@ -102,6 +110,7 @@ public class Viaje implements Serializable {
     public Terminal getTerminalLlegada() {
         return terminalLlegada;
     }
+
     public ArrayList<Pasaje> getPasajes() {
         return pasajes;
     }
@@ -112,16 +121,11 @@ public class Viaje implements Serializable {
 
     public boolean addConductor(Conductor conductor) {
 
-        if (conductor == null) {
-            return false;
-        }
-
-        if (conductores.contains(conductor)) {
+        if (conductor == null || conductores.contains(conductor)) {
             return false;
         }
 
         conductores.add(conductor);
-
         conductor.addViaje(this);
 
         return true;
@@ -138,7 +142,6 @@ public class Viaje implements Serializable {
         }
 
         pasajes.add(pasaje);
-
         return true;
     }
 
@@ -156,7 +159,6 @@ public class Viaje implements Serializable {
         }
 
         for (Pasaje p : pasajes) {
-
             if (p.getAsiento() == asiento) {
                 return false;
             }
