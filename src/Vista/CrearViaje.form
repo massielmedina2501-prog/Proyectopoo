@@ -76,7 +76,7 @@
           <component id="38b65" class="javax.swing.JSpinner" binding="duracion">
             <constraints>
               <grid row="4" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="400" height="40"/>
+                <preferred-size width="400" height="20"/>
               </grid>
             </constraints>
             <properties>
@@ -106,7 +106,7 @@
           <component id="73008" class="javax.swing.JSpinner" binding="hora">
             <constraints>
               <grid row="3" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="400" height="40"/>
+                <preferred-size width="400" height="20"/>
               </grid>
             </constraints>
             <properties>
@@ -189,7 +189,7 @@
           <component id="d5f19" class="javax.swing.JSpinner" binding="fecha">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="400" height="40"/>
+                <preferred-size width="400" height="20"/>
               </grid>
             </constraints>
             <properties>
@@ -266,7 +266,7 @@
           <component id="da89f" class="javax.swing.JTextField" binding="precio">
             <constraints>
               <grid row="1" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="400" height="40"/>
+                <preferred-size width="400" height="20"/>
               </grid>
             </constraints>
             <properties>

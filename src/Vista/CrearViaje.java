@@ -43,24 +43,23 @@ public class CrearViaje extends JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
 
-        // Configurar JSpinner para seleccionar la hora
+
         SpinnerDateModel modeloHora = new SpinnerDateModel();
         hora.setModel(modeloHora);
 
         JSpinner.DateEditor editorHora = new JSpinner.DateEditor(hora, "HH:mm");
         hora.setEditor(editorHora);
 
-// Hora inicial (opcional)
+
         hora.setValue(new Date());
 
-        // Configurar JSpinner para seleccionar la fecha
+
         SpinnerDateModel modeloFecha = new SpinnerDateModel();
         fecha.setModel(modeloFecha);
 
         JSpinner.DateEditor editorFecha = new JSpinner.DateEditor(fecha, "dd/MM/yyyy");
         fecha.setEditor(editorFecha);
 
-// Fecha actual
         fecha.setValue(new Date());
 
         // AQUÍ SE CARGAN LAS EMPRESAS Y TERMINALES
