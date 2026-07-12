@@ -39,10 +39,24 @@ public class IOSVP {
                     case 1:
                         IdPersona id = campos[1].contains("-") ? Rut.of(campos[1].replace(".", "")) : Pasaporte.of(campos[1], "Chilena");
                         Nombre nom = new Nombre(Tratamiento.valueOf(campos[2]), campos[3], campos[4], campos[5]);
-                        if (campos[0].contains("C")) cSVP.createCliente(id, nom, campos[7]);
-                        if (campos[0].contains("P")) {
 
-                            cSVP.createPasajero(id, nom, campos[6], new Nombre(Tratamiento.valueOf(campos[8]), campos[9], campos[10], campos[11]), campos[12]);
+                        if (campos[0].contains("C")) {
+                            cSVP.createCliente(id, nom, campos[7]);
+                        }
+
+                        if (campos[0].contains("P")) {
+                            cSVP.createPasajero(
+                                    id,
+                                    nom,
+                                    campos[6],
+                                    new Nombre(
+                                            Tratamiento.valueOf(campos[7]),
+                                            campos[8],
+                                            campos[9],
+                                            campos[10]
+                                    ),
+                                    campos[11]
+                            );
                         }
                         break;
                     case 2: // Empresas

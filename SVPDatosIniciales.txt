@@ -1,32 +1,32 @@
-CP;11.111.111-1;SR;José Esteban;Cid;Aedo;(+569) 1122 3344;jose@fake.email.cl;SRA;Lidia Andrea;Solis;Robles;(+569) 9777 4432
-CP;22.222.222-2;SRA;María Paz;Daza;Barrera;(+569) 1672 3421;maria@fake.email.cl;SR;Rafael Alonso;Flores;Caro;(+569) 8070 1641
-C;33.333.333-3;SRA;Ángela Eugenia;Muñoz;Naranjo;(+569) 6172 3323;angela@fake.email.cl
-P;44.444.444-4;SR;Carlos Patricio;Orellana;Godoy;(+569) 9872 6472; kakas.jaja@gmail.com;SRA;Karen Ana;Leon;Pino;(+569) 4734 4111
+C;12.345.678-9;SR;JUAN;PEREZ;GOMEZ;;juan.perez@email.com
+P;19.876.543-2;SRA;MARIA;GARCIA;LOPEZ;+56911112222;SR;PEDRO;GARCIA;TOLOZA;+56933334444
+C;22.444.555-6;SR;LUCAS;MATUS;URRA;;lucas.matus@email.com
+P;25.666.777-K;SRA;ANA;SOLIS;VENEGAS;+56955556666;SRA;CARMEN;VENEGAS;PINTO;+56977778888
 +
-88.888.888-8;Buses Ñuble;https://www.busesnuble.cl
-99.999.999-9;Efe Bus;https://www.efebus.cl
+11.111.111-1;Eme Bus;www.emebus.cl
+22.222.222-2;Turbus;www.turbus.cl
+33.333.333-3;Pullman Bus;www.pullmanbus.cl
 +
-A;55.555.555-5;SR;Juan Esteban;Lagos;Rios;San Carlos;201;Talcahuano;88.888.888-8
-C;66.666.666-6;SR;Diego Andrés;Pavez;Martel;Av Francia;730;Los Lagos;88.888.888-8
-C;77.777.777-7;SRA;Elena Rosa;Saez;Torres;Andalucia;2778;Linares;88.888.888-8
+C;14.111.222-3;SR;CARLOS;MENDOZA;CASTRO;Av. Libertad;123;Chillan;11.111.111-1
+A;16.333.444-5;SR;RAUL;POBLETE;JARA;Calle El Roble;456;Chillan;11.111.111-1
+
+C;15.555.666-7;SR;JAIME;RIQUELME;SANHUEZA;Los Pajaritos;789;Santiago;22.222.222-2
+A;17.888.999-0;SRA;ELENA;FUENTES;MARIN;Av. Ecuador;101;Santiago;22.222.222-2
+
+C;18.999.111-2;SR;MIGUEL;TORRES;LEIVA;Av. Brasil;550;Concepcion;33.333.333-3
+A;19.111.222-3;SRA;PAULA;NAVARRO;DIAZ;Calle Maipu;230;Concepcion;33.333.333-3
 +
-El Pinar;Los Alamos;450;Pinto
-El Nevado Alto;Las Violetas;1830;Talcahuano
-Sofia III;San Jerónimo;169;Alhué
+Terminal Maria Teresa;Av. O'Higgins;310;Chillan
+Terminal Alameda;Av. Bernardo O'Higgins;3750;Santiago
+Terminal Collao;Av. General Bonilla;2500;Concepcion
+Terminal Valdivia;Av. Alemania;1200;Valdivia
 +
-ABCD12;Mercedes-Benz;500;45;88.888.888-8
-EFGH34;Volvo;B450R;52;88.888.888-8
-IJKL56;Scania;K310;40;99.999.999-9
-MNOP78;Marcopolo;Paradiso;38;88.888.888-8
-QRST90;Irizar;i6;44;88.888.888-8
+XX-YY-11;Marcopolo;Paradiso 1800;40;11.111.111-1
+AA-BB-22;Scania;Irizar i6;44;22.222.222-2
+CC-DD-33;Mercedes Benz;Busscar Vissta;50;33.333.333-3
 +
-15-12-2024;08:00;3500;90;EFGH34;55.555.555-5;66.666.666-6;El Nevado Alto;El Pinar
-15-12-2024;11:30;4000;90;EFGH34;55.555.555-5;66.666.666-6;El Pinar;El Nevado Alto
-15-12-2024;16:00;3500;90;EFGH34;55.555.555-5;66.666.666-6;El Nevado Alto;El Pinar
-16-12-2024;08:30;9600;330;QRST90;55.555.555-5;77.777.777-7;El Pinar;Sofia III
-17-12-2024;08:30;9600;330;QRST90;55.555.555-5;77.777.777-7;Sofia III;El Pinar
-18-12-2024;08:00;3500;90;EFGH34;55.555.555-5;66.666.666-6;El Nevado Alto;El Pinar
-18-12-2024;11:30;4000;90;EFGH34;55.555.555-5;66.666.666-6;El Pinar;El Nevado Alto
-18-12-2024;16:00;3500;90;EFGH34;55.555.555-5;66.666.666-6;El Nevado Alto;El Pinar
-19-12-2024;08:30;9600;330;QRST90;55.555.555-5;77.777.777-7;El Pinar;Sofia III
-20-12-2024;08:30;9600;330;QRST90;55.555.555-5;77.777.777-7;Sofia III;El Pinar
+12-07-2026;08:00;300;5;XX-YY-11;16.333.444-5;14.111.222-3;Terminal Maria Teresa;Terminal Alameda
+12-07-2026;14:30;240;5;AA-BB-22;17.888.999-0;15.555.666-7;Terminal Alameda;Terminal Maria Teresa
+13-07-2026;09:15;500;6;CC-DD-33;19.111.222-3;18.999.111-2;Terminal Collao;Terminal Alameda
+14-07-2026;18:00;450;5;XX-YY-11;16.333.444-5;14.111.222-3;Terminal Maria Teresa;Terminal Collao
+15-07-2026;07:30;600;7;AA-BB-22;17.888.999-0;15.555.666-7;Terminal Alameda;Terminal Valdivia

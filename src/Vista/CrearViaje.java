@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class CrearViaje extends JFrame {
+    private boolean cargandoDatos = false;
     private JPanel panel1;
     private JComboBox<String> empresa;
     private JSpinner duracion;
@@ -68,8 +69,11 @@ public class CrearViaje extends JFrame {
         CardLayout layout = (CardLayout) panel1.getLayout();
         layout.first(panel1);
 
+
         empresa.addActionListener(e -> {
-            actualizarComponentesPorEmpresa();
+            if (!cargandoDatos) { // Solo actúa si NO estamos en proceso de carga inicial
+                actualizarComponentesPorEmpresa();
+            }
         });
 
         siguienteButton.addActionListener(e -> {
@@ -93,24 +97,33 @@ public class CrearViaje extends JFrame {
 
     private void llenarDatosIniciales() {
         try {
+            cargandoDatos = true;
+
             empresa.removeAllItems();
             Tsalida.removeAllItems();
             Tllegada.removeAllItems();
 
-            //Carga las empresas disponibles leídas del archivo
             String[][] listaEmpresas = controladorEmp.listEmpresas();
             for (String[] emp : listaEmpresas) {
                 empresa.addItem(emp[0]);
             }
 
-            //Carga los terminales disponibles leídos del archivo
             String[] terminalesSistema = controladorEmp.getNombresTerminales();
             for (String t : terminalesSistema) {
                 Tsalida.addItem(t);
                 Tllegada.addItem(t);
             }
 
+            cargandoDatos = false;
+
+
+            if (empresa.getItemCount() > 0) {
+                empresa.setSelectedIndex(0);
+                actualizarComponentesPorEmpresa();
+            }
+
         } catch (Exception ex) {
+            cargandoDatos = false;
             JOptionPane.showMessageDialog(this, "Error al cargar datos iniciales: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }

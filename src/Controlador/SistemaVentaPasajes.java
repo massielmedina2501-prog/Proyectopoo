@@ -82,6 +82,7 @@ public class SistemaVentaPasajes {
     }
 
     public void iniciaVenta(String idDoc, TipoDocumento tipo, LocalDate fechaViaje, String comSalida, String comLlegada, IdPersona idCliente, int nroPasajes) throws SVPException {
+
         Cliente c = findCliente(idCliente).orElseThrow(() -> new SVPException("Cliente no encontrado."));
         ventas.add(new Venta(idDoc, tipo, fechaViaje, c));
     }
@@ -197,7 +198,18 @@ public class SistemaVentaPasajes {
     }
 
     // --- BÚSQUEDAS
-    private Optional<Cliente> findCliente(IdPersona id) { return clientes.stream().filter(c -> c.getIdPersona().equals(id)).findFirst(); }
+    // --- BÚSQUEDAS
+    private Optional<Cliente> findCliente(IdPersona id) {
+        return clientes.stream().filter(c -> {
+
+            if (c.getIdPersona() instanceof Rut && id instanceof Rut) {
+                return ((Rut) c.getIdPersona()).getNumero() == ((Rut) id).getNumero();
+            }
+            String idExistente = c.getIdPersona().toString().replace(".", "").replace("-", "").trim();
+            String idBuscado = id.toString().replace(".", "").replace("-", "").trim();
+            return idExistente.equalsIgnoreCase(idBuscado);
+        }).findFirst();
+    }
     private Optional<Venta> findVenta(String idDoc, TipoDocumento tipo) { return ventas.stream().filter(v -> v.getIdDocumento().equals(idDoc) && v.getTipo() == tipo).findFirst(); }
     private Optional<Viaje> findViaje(LocalDate fecha, LocalTime hora, String pat) { return viajes.stream().filter(v -> v.getFecha().equals(fecha) && v.getHora().equals(hora) && v.getBus().getPatente().equals(pat)).findFirst(); }
     private Optional<Pasajero> findPasajero(IdPersona id) { return pasajeros.stream().filter(p -> p.getIdPersona().equals(id)).findFirst(); }

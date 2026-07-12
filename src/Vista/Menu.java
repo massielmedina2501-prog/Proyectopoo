@@ -91,8 +91,16 @@ public class Menu extends JFrame {
 
 
         comprarPasajesButton.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this, "Abrir ventana de compra de pasajes");
-            new VentaPasajes().setVisible(true);
+            JDialog dialogoVenta = new JDialog(this, "Venta de Pasajes", true);
+            dialogoVenta.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+
+            VentaPasajes panelVenta = new VentaPasajes();
+
+            dialogoVenta.add(panelVenta);
+            dialogoVenta.setSize(this.getSize());
+            dialogoVenta.setLocationRelativeTo(this);
+
+            dialogoVenta.setVisible(true);
         });
 
         ingresarViajesButton.addActionListener(e -> {
@@ -103,10 +111,9 @@ public class Menu extends JFrame {
         });
 
         listasButton.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this, "Abrir ventanas de consultas");
-            // new VentanaListas().setVisible(true);
+            Listas ventanaListas = new Listas(this);
+            ventanaListas.setVisible(true);
         });
-
 
         salirButton.addActionListener(e -> {
             int confirm = JOptionPane.showConfirmDialog(
