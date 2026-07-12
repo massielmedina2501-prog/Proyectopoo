@@ -12,7 +12,7 @@ import java.util.stream.Collector;
 
 
 public class ControladorEmpresas {
-
+//private String hola; para hacer commit
     private static ControladorEmpresas instance = null;
     private ArrayList<Empresa> empresas;
     private ArrayList<Terminal> terminales;
